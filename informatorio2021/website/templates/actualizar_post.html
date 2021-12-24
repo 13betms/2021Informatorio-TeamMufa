@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Actualizar Post {% endblock %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+            <h1>Actualizar Post</h1>
+            <br/><br/>
+
+            <div class="form-group"></div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.media }}
+                {{form.as_p}}
+                <button class="btn btn-dark">Actualizar</button>
+            </form>
+            </div>
+    {% else %}
+    Usted no puede realizar esta acción porque no es parte del staff.
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Eliminar Post {% endblock %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+        <h1>Eliminar Post</h1>
+        <br/><br/>
+
+        <h3>Eliminar: {{post.titulo}}</h3>
+
+        <br/>
+        <div class="form-group"></div>
+        <form method="POST">
+            {% csrf_token %}
+            <strong>¿Estás seguro que quieres eliminar el post?</strong><br/><br/>
+            <button class="btn btn-dark">Eliminar</button><br/>
+        </form>
+        </div>
+    {% else %}
+    Usted no puede realizar esta acción porque no es parte del staff.
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
